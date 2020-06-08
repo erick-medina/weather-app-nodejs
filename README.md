@@ -1,2 +1,2 @@
-# weather-app-nodejs
+# Weather App using Node.js
 Learning challenge

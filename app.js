@@ -1,5 +1,5 @@
 const geocode = require('./utils/geocode');
-const forecast = require('./utils/forecast')
+const forecast = require('./utils/forecast');
 
 /*const url = 'http://api.weatherstack.com/current?access_key=a1d18a6f2d361119a77a3ad037444f69&query=';
 
@@ -15,15 +15,27 @@ request({url: url, json: true}, (error, response) => { // 'json: true' to replac
     }
 });*/
 
-geocode('Antwerp', (error, data) => {
-   console.log(`Error: ${error}`)
-   console.log(`Data: ${data}`)
-   
- })
- forecast(4.3997081, 51.2211097, (error, data) => {
-    console.log(`Error: ${error}`);
-    console.log(`Data: ${data}`);
-});
+const address = process.argv[2]; // to enter command value in terminal
+
+if (!address) {
+    console.log('Please provide an address and try again')
+} else {
+    geocode(address, (error, {longitude, latitude, location}) => {
+        if (error) {
+            return console.log(error);
+        } 
+    
+       forecast(latitude, longitude, (error, dataForecast) => {
+           if (error) {
+               console.log(error)
+           }
+        console.log(location)
+        console.log(dataForecast)
+    });
+})
+}
+
+
  
 
 
