@@ -1,2 +1,5 @@
 # Weather App using Node.js
-Learning challenge
+
+## Applying these concepts:
+- Async in Node.js
+- Http requests
